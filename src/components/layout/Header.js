@@ -54,7 +54,6 @@ const Header = () => {
           >
             Quiz
           </Typography>
-
           <Box
             sx={{
               flexGrow: 1,
