@@ -1,6 +1,10 @@
+// react-router-dom
+import { Navigate, Route, Routes } from "react-router-dom";
+// mui
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 // components
 import LayOut from "./components/layout";
+import HomePage from "./components/home/index";
 
 const App = () => {
   const theme = createTheme({
@@ -17,7 +21,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <LayOut>
-        <div></div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
       </LayOut>
     </ThemeProvider>
   );
