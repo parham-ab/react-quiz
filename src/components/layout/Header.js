@@ -11,6 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 // icons
 import MenuIcon from "@mui/icons-material/Menu";
 import QuizIcon from "@mui/icons-material/Quiz";
+import { Link } from "react-router-dom";
 
 const pages = ["Contact Us", "About Us"];
 
@@ -43,17 +44,19 @@ const Header = () => {
             minHeight: "50px",
           }}
         >
-          <QuizIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-            }}
-          >
-            Quiz
-          </Typography>
+          <Link to="/" style={{ display: "flex", alignItems: "center" }}>
+            <QuizIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+            <Typography
+              variant="h6"
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              Quiz
+            </Typography>
+          </Link>
           <Box
             sx={{
               flexGrow: 1,

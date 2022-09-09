@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 // components
 import LayOut from "./components/layout";
 import HomePage from "./components/home/index";
+import AnswerResults from "./components/home/AnswerResults";
 
 const App = () => {
   const theme = createTheme({
@@ -23,6 +24,8 @@ const App = () => {
       <LayOut>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/AnswerResults" element={<AnswerResults />} />
+          <Route path="/*" element={<Navigate to={"/"} />} />
         </Routes>
       </LayOut>
     </ThemeProvider>
