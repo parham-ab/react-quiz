@@ -46,7 +46,11 @@ const AnswerResults = ({
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
+        <ListSubheader
+          component="div"
+          id="nested-list-subheader"
+          style={{ backgroundColor: "#5d687633", color: "#fff" }}
+        >
           Answer Results
         </ListSubheader>
       }
