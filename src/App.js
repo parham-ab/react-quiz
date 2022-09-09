@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
+// components
+import LayOut from "./components/layout";
 
 const App = () => {
-  return (
-    <div>
-      
-    </div>
-  );
+  return <LayOut></LayOut>;
 };
 
 export default App;
