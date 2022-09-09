@@ -12,9 +12,8 @@ const App = () => {
     typography: {
       fontFamily: ["Rubik", "sans-serif"].join(","),
       fontSize: 15,
-      fontWeightLight: 400,
+      fontWeightRegular: 400,
       fontWeightMedium: 500,
-      fontWeightRegular: 600,
       fontWeightBold: 700,
     },
   });

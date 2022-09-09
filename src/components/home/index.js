@@ -54,7 +54,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <Typography fontWeight="normal" variant="h5" component="h1">
+      <Typography variant="h5" component="h1">
         {questionsList[questionIndex].questionText}
       </Typography>
       <div>
