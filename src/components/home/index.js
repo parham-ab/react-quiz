@@ -1,3 +1,9 @@
+import { useState } from "react";
+// DB
+import { questionsList } from "../../db/questionsList";
+// components
+import AnswerResults from "./AnswerResults";
+// mui components
 import {
   Button,
   Typography,
@@ -10,27 +16,15 @@ import {
   Step,
   Divider,
 } from "@mui/material";
-import { useState } from "react";
-import { questionsList } from "../../db/questionsList";
-import AnswerResults from "./AnswerResults";
-import InfoIcon from "@mui/icons-material/Info";
 
 const HomePage = () => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
-  // checkAnswerHandle
-  // console.log(questionsList.map((item) => item.answerOptions));
-  const checkAnswerHandle = (isCorrect) => {
-    // true answers
-    const trueAnswers = questionsList.map((item) =>
-      item.answerOptions.filter((item) => item.isCorrect === true)
-    );
-    // wrong answers
-    const wrongAnswers = questionsList.map((item) =>
-      item.answerOptions.filter((item) => item.isCorrect === isCorrect)
-    );
+  const [myAnswers, setMyAnswers] = useState([]);
 
+  const checkAnswerHandle = ({ isCorrect, answerText }) => {
+    setMyAnswers([...myAnswers, { question: answerText, isCorrect }]);
     if (isCorrect === true) {
       setScore((prevScore) => prevScore + 1);
     }
@@ -58,6 +52,7 @@ const HomePage = () => {
         setScore={setScore}
         resetter={resetter}
         questionsList={questionsList}
+        myAnswers={myAnswers}
       />
     );
   }
@@ -92,7 +87,12 @@ const HomePage = () => {
           {questionsList[questionIndex].answerOptions.map((item, index) => (
             <Box key={index}>
               <Button
-                onClick={() => checkAnswerHandle(item.isCorrect)}
+                onClick={() =>
+                  checkAnswerHandle({
+                    isCorrect: item.isCorrect,
+                    answerText: item.answerText,
+                  })
+                }
                 variant="outlined"
                 sx={{
                   width: "200px",

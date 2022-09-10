@@ -23,13 +23,8 @@ const AnswerResults = ({
   score,
   setScore,
   resetter,
+  myAnswers,
 }) => {
-  const [wrongs, setWrongs] = useState(true);
-
-  const handleClick = () => {
-    setWrongs(!wrongs);
-  };
-
   return (
     <List
       sx={{
@@ -70,7 +65,7 @@ const AnswerResults = ({
     >
       {questionsList.map((item, index) => (
         <div key={index}>
-          <ListItemButton onClick={handleClick}>
+          <ListItemButton>
             <ListItemIcon
               sx={{ color: "#fff", display: "flex", alignItems: "center" }}
             >
