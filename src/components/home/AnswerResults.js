@@ -38,7 +38,7 @@ const AnswerResults = ({
     <List
       sx={{
         width: "100%",
-        maxWidth: 360,
+        maxWidth: 340,
         border: "solid 1px",
         borderRadius: "10px",
         background: "#2400eb0f",
@@ -76,23 +76,26 @@ const AnswerResults = ({
         <div key={index}>
           <ListItemButton onClick={handleClick}>
             <ListItemIcon
-              sx={{ color: "#fff", display: "felx", alignItems: "center" }}
-              //  sx={{ color: "#df4a4a" }}
+              sx={{ color: "#fff", display: "flex", alignItems: "center" }}
             >
-              <DangerousIcon />
-              <Typography variant="body2">{item.questionText}</Typography>
+              <Typography variant="body2" noWrap sx={{ fontSize: "14px" }}>
+                {item.questionText}
+              </Typography>
             </ListItemIcon>
             <ListItemText primary={item.answerText} fontWeight="normal" />
             {item ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
-          <Collapse in={wrongs} timeout="auto" unmountOnExit key={8}>
+          <Collapse in={wrongs} timeout="auto" unmountOnExit>
             {item.answerOptions.map((answers, answerIndex) => (
               <List component="div" disablePadding key={answerIndex}>
-                <Box sx={{ pl: 4 }}>
-                  <ListItemText
-                    primary={answers.answerText}
+                <Box sx={{ pl: 3 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontSize: "15px" }}
                     className={answers.isCorrect ? "trueAnswer" : "falseAnswer"}
-                  />
+                  >
+                    {answers.answerText}
+                  </Typography>
                 </Box>
               </List>
             ))}
