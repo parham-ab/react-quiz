@@ -1,4 +1,3 @@
-import { useState } from "react";
 // DB
 import { questionsList } from "../../db/questionsList";
 // icons
@@ -15,16 +14,8 @@ import {
   ListItemText,
 } from "@mui/material";
 
-const AnswerResults = ({
-  questionIndex,
-  setQuestionIndex,
-  showScore,
-  setShowScore,
-  score,
-  setScore,
-  resetter,
-  myAnswers,
-}) => {
+const AnswerResults = ({ score, resetter }) => {
+  // title
   return (
     <List
       sx={{
@@ -37,11 +28,11 @@ const AnswerResults = ({
         overflow: "auto",
       }}
       component="nav"
-      aria-labelledby="nested-list-subheader"
+      aria-labelledby="questions"
       subheader={
         <ListSubheader
           component="div"
-          id="nested-list-subheader"
+          id="answerLists"
           style={{
             backgroundColor: "#5d687633",
             color: "#fff",

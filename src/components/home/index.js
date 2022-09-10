@@ -21,10 +21,8 @@ const HomePage = () => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
-  const [myAnswers, setMyAnswers] = useState([]);
 
   const checkAnswerHandle = ({ isCorrect, answerText }) => {
-    setMyAnswers([...myAnswers, { question: answerText, isCorrect }]);
     if (isCorrect === true) {
       setScore((prevScore) => prevScore + 1);
     }
@@ -39,6 +37,7 @@ const HomePage = () => {
     setShowScore(false);
     setQuestionIndex(0);
     setScore(0);
+    // title
   };
 
   if (showScore) {
@@ -52,7 +51,6 @@ const HomePage = () => {
         setScore={setScore}
         resetter={resetter}
         questionsList={questionsList}
-        myAnswers={myAnswers}
       />
     );
   }
