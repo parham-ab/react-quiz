@@ -20,20 +20,28 @@ const HomePage = () => {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   // checkAnswerHandle
+  // console.log(questionsList.map((item) => item.answerOptions));
   const checkAnswerHandle = (isCorrect) => {
+    // true answers
+    const trueAnswers = questionsList.map((item) =>
+      item.answerOptions.filter((item) => item.isCorrect === true)
+    );
+    // wrong answers
+    const wrongAnswers = questionsList.map((item) =>
+      item.answerOptions.filter((item) => item.isCorrect === isCorrect)
+    );
+
     if (isCorrect === true) {
       setScore((prevScore) => prevScore + 1);
     }
-
     if (questionIndex + 1 < questionsList.length) {
       setQuestionIndex((prevIndex) => prevIndex + 1);
     } else {
       setShowScore(true);
     }
   };
-  // resetter
+  // reset function
   const resetter = () => {
-    console.log("reset");
     setShowScore(false);
     setQuestionIndex(0);
     setScore(0);
@@ -68,7 +76,7 @@ const HomePage = () => {
           alternativeLabel
           style={{ paddingTop: "5px" }}
         >
-          {questionsList.map((label,index) => (
+          {questionsList.map((label, index) => (
             <Step key={index}>
               <StepLabel></StepLabel>
             </Step>
@@ -80,7 +88,7 @@ const HomePage = () => {
             {questionsList[questionIndex].questionText}
           </Typography>
         </CardContent>
-        <CardActions sx={{ display: "flex", flexDirection: "column" }}>
+        <CardActions sx={{ display: "flex", flexDirection: "column", mb: 3 }}>
           {questionsList[questionIndex].answerOptions.map((item, index) => (
             <Box key={index}>
               <Button
