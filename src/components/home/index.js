@@ -68,8 +68,8 @@ const HomePage = () => {
           alternativeLabel
           style={{ paddingTop: "5px" }}
         >
-          {questionsList.map((label) => (
-            <Step key={label}>
+          {questionsList.map((label,index) => (
+            <Step key={index}>
               <StepLabel></StepLabel>
             </Step>
           ))}
