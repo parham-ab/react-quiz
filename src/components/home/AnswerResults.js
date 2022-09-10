@@ -1,11 +1,8 @@
+import { useState } from "react";
 // DB
 import { questionsList } from "../../db/questionsList";
 // icons
 import ReplayIcon from "@mui/icons-material/Replay";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import DangerousIcon from "@mui/icons-material/Dangerous";
-import { useState } from "react";
 // mui components
 import { Box } from "@mui/system";
 import {
@@ -16,7 +13,6 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Collapse,
 } from "@mui/material";
 
 const AnswerResults = ({
@@ -83,23 +79,20 @@ const AnswerResults = ({
               </Typography>
             </ListItemIcon>
             <ListItemText primary={item.answerText} fontWeight="normal" />
-            {item ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
-          <Collapse in={wrongs} timeout="auto" unmountOnExit>
-            {item.answerOptions.map((answers, answerIndex) => (
-              <List component="div" disablePadding key={answerIndex}>
-                <Box sx={{ pl: 3 }}>
-                  <Typography
-                    variant="body2"
-                    sx={{ fontSize: "15px" }}
-                    className={answers.isCorrect ? "trueAnswer" : "falseAnswer"}
-                  >
-                    {answers.answerText}
-                  </Typography>
-                </Box>
-              </List>
-            ))}
-          </Collapse>
+          {item.answerOptions.map((answers, answerIndex) => (
+            <List component="div" disablePadding key={answerIndex}>
+              <Box sx={{ pl: 5 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ fontSize: "15px" }}
+                  className={answers.isCorrect ? "trueAnswer" : "falseAnswer"}
+                >
+                  {answers.answerText}
+                </Typography>
+              </Box>
+            </List>
+          ))}
         </div>
       ))}
     </List>
