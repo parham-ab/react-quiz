@@ -10,9 +10,11 @@ import DangerousIcon from "@mui/icons-material/Dangerous";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import InfoIcon from "@mui/icons-material/Info";
 import { questionsList } from "../../db/questionsList";
+import ReplayIcon from "@mui/icons-material/Replay";
 
 import { useState } from "react";
 import { Box } from "@mui/system";
+import { Button, IconButton } from "@mui/material";
 
 const AnswerResults = ({
   questionIndex,
@@ -21,6 +23,7 @@ const AnswerResults = ({
   setShowScore,
   score,
   setScore,
+  resetter,
 }) => {
   const [wrongs, setWrongs] = useState(true);
   const [trues, setTrues] = useState(true);
@@ -49,9 +52,24 @@ const AnswerResults = ({
         <ListSubheader
           component="div"
           id="nested-list-subheader"
-          style={{ backgroundColor: "#5d687633", color: "#fff" }}
+          style={{
+            backgroundColor: "#5d687633",
+            color: "#fff",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
-          Answer Results
+          you answered {score} out of {questionsList.length}
+          <IconButton
+            color="info"
+            aria-label="replay"
+            component="label"
+            onClick={resetter}
+            size="small"
+          >
+            <ReplayIcon />
+          </IconButton>
         </ListSubheader>
       }
     >
@@ -84,16 +102,6 @@ const AnswerResults = ({
           </Box>
         </List>
       </Collapse>
-      {/* // <div>
-      //   <p>
-      //     you answered {score} out of {questionsList.length}
-      //   </p>
-      //   <div>
-      //     <Button onClick={resetter} variant="text" color="error" size="small">
-      //       Reset
-      //     </Button>
-      //   </div>
-      // </div> */}
     </List>
   );
 };
