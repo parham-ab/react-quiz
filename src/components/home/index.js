@@ -5,10 +5,15 @@ import {
   Card,
   CardContent,
   CardActions,
+  Stepper,
+  StepLabel,
+  Step,
+  Divider,
 } from "@mui/material";
 import { useState } from "react";
 import { questionsList } from "../../db/questionsList";
 import AnswerResults from "./AnswerResults";
+import InfoIcon from "@mui/icons-material/Info";
 
 const HomePage = () => {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -50,49 +55,56 @@ const HomePage = () => {
   }
 
   return (
-    <Card
-      sx={{
-        maxWidth: "600px",
-        margin: "110px auto",
-        backgroundColor: "#0000003b",
-      }}
-    >
-      <CardContent>
-        <Typography
-          sx={{ fontSize: 14, color: "#fff" }}
-          color="text.secondary"
-          gutterBottom
+    <>
+      <Card
+        sx={{
+          maxWidth: "600px",
+          margin: "110px auto",
+          backgroundColor: "#0000003b",
+        }}
+      >
+        <Stepper
+          activeStep={questionIndex}
+          alternativeLabel
+          style={{ paddingTop: "16px" }}
         >
-          {`${questionIndex + 1} / ${questionsList.length}`}
-        </Typography>
-        <Typography variant="h5" component="h1" sx={{ color: "#fff" }}>
-          {questionsList[questionIndex].questionText}
-        </Typography>
-      </CardContent>
-      <CardActions sx={{ display: "flex", flexDirection: "column" }}>
-        {questionsList[questionIndex].answerOptions.map((item, index) => (
-          <Box key={index}>
-            <Button
-              onClick={() => checkAnswerHandle(item.isCorrect)}
-              variant="outlined"
-              sx={{
-                width: "200px",
-                display: "flex",
-                justifyContent: "flex-start",
-                color: "#fff",
-                margin: "5px",
-                borderColor: "#ffed00",
-                "&:hover": {
-                  borderColor: "#fff",
-                },
-              }}
-            >
-              {item.answerText}
-            </Button>
-          </Box>
-        ))}
-      </CardActions>
-    </Card>
+          {questionsList.map((label) => (
+            <Step key={label}>
+              <StepLabel></StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <Divider sx={{ backgroundColor: "#e8e8e8", mt: 1 }} />
+        <CardContent>
+          <Typography variant="h5" component="h1" sx={{ color: "#fff" }}>
+            {questionsList[questionIndex].questionText}
+          </Typography>
+        </CardContent>
+        <CardActions sx={{ display: "flex", flexDirection: "column" }}>
+          {questionsList[questionIndex].answerOptions.map((item, index) => (
+            <Box key={index}>
+              <Button
+                onClick={() => checkAnswerHandle(item.isCorrect)}
+                variant="outlined"
+                sx={{
+                  width: "200px",
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  color: "#fff",
+                  margin: "5px",
+                  borderColor: "#ffed00",
+                  "&:hover": {
+                    borderColor: "#fff",
+                  },
+                }}
+              >
+                {item.answerText}
+              </Button>
+            </Box>
+          ))}
+        </CardActions>
+      </Card>
+    </>
   );
 };
 
