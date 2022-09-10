@@ -66,7 +66,7 @@ const HomePage = () => {
         <Stepper
           activeStep={questionIndex}
           alternativeLabel
-          style={{ paddingTop: "16px" }}
+          style={{ paddingTop: "5px" }}
         >
           {questionsList.map((label) => (
             <Step key={label}>
@@ -91,7 +91,7 @@ const HomePage = () => {
                   display: "flex",
                   justifyContent: "flex-start",
                   color: "#fff",
-                  margin: "5px",
+                  margin: "2px",
                   borderColor: "#ffed00",
                   "&:hover": {
                     borderColor: "#fff",

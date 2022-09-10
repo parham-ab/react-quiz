@@ -20,11 +20,13 @@ body {
 .MuiStepConnector-line {
   border-top-style: dashed !important;
 }
-
 .MuiStepIcon-root {
   color: #ffd901 !important;
   font-size: 21px !important;
 }
 .MuiStepIcon-text {
   fill: #111 !important;
+}
+.MuiCardActions-root > :not(:first-of-type) {
+  margin: 0 !important;
 }
