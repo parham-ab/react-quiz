@@ -84,6 +84,16 @@ const AnswerResults = ({
           </Box>
         </List>
       </Collapse>
+      {/* // <div>
+      //   <p>
+      //     you answered {score} out of {questionsList.length}
+      //   </p>
+      //   <div>
+      //     <Button onClick={resetter} variant="text" color="error" size="small">
+      //       Reset
+      //     </Button>
+      //   </div>
+      // </div> */}
     </List>
   );
 };

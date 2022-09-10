@@ -1,4 +1,11 @@
-import { Button, Typography } from "@mui/material";
+import {
+  Button,
+  Typography,
+  Box,
+  Card,
+  CardContent,
+  CardActions,
+} from "@mui/material";
 import { useState } from "react";
 import { questionsList } from "../../db/questionsList";
 import AnswerResults from "./AnswerResults";
@@ -39,27 +46,32 @@ const HomePage = () => {
         resetter={resetter}
         questionsList={questionsList}
       />
-      // <div>
-      //   <p>
-      //     you answered {score} out of {questionsList.length}
-      //   </p>
-      //   <div>
-      //     <Button onClick={resetter} variant="text" color="error" size="small">
-      //       Reset
-      //     </Button>
-      //   </div>
-      // </div>
     );
   }
 
   return (
-    <div>
-      <Typography variant="h5" component="h1">
-        {questionsList[questionIndex].questionText}
-      </Typography>
-      <div>
+    <Card
+      sx={{
+        maxWidth: "600px",
+        margin: "110px auto",
+        backgroundColor: "#0000003b",
+      }}
+    >
+      <CardContent>
+        <Typography
+          sx={{ fontSize: 14, color: "#fff" }}
+          color="text.secondary"
+          gutterBottom
+        >
+          {`${questionIndex + 1} / ${questionsList.length}`}
+        </Typography>
+        <Typography variant="h5" component="h1" sx={{ color: "#fff" }}>
+          {questionsList[questionIndex].questionText}
+        </Typography>
+      </CardContent>
+      <CardActions sx={{ display: "flex", flexDirection: "column" }}>
         {questionsList[questionIndex].answerOptions.map((item, index) => (
-          <div key={index}>
+          <Box key={index}>
             <Button
               onClick={() => checkAnswerHandle(item.isCorrect)}
               variant="outlined"
@@ -77,10 +89,10 @@ const HomePage = () => {
             >
               {item.answerText}
             </Button>
-          </div>
+          </Box>
         ))}
-      </div>
-    </div>
+      </CardActions>
+    </Card>
   );
 };
 
