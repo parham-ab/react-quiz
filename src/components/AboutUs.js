@@ -1,5 +1,6 @@
-// hooks
+// mui components
 import { Box, Divider, Typography } from "@mui/material";
+// hooks
 import useTitle from "./hooks/UseTitle";
 
 const AboutUs = () => {
@@ -7,7 +8,7 @@ const AboutUs = () => {
   useTitle("React Quiz App - About");
 
   return (
-    <Box textAlign="center" p={3} mt={'200px'}>
+    <Box textAlign="center" p={3} mt={"200px"}>
       <Box>
         <Typography variant="h5">
           Made with <span style={{ color: "#ff6767" }}>❤</span> by{" "}
