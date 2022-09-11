@@ -129,7 +129,7 @@ const Header = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "#e3e3e3", display: "block" }}
+                sx={{ mx: 2, color: "#e3e3e3", display: "block" }}
               >
                 <Link to={`/${page}`}>{page.split("U")[0] + " " + ["Us"]}</Link>
               </Button>
