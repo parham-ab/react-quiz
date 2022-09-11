@@ -16,8 +16,12 @@ import {
   Step,
   Divider,
 } from "@mui/material";
+import UseTitle from "../hooks/UseTitle";
 
 const HomePage = () => {
+  // title
+  UseTitle("React Quiz App");
+
   const [questionIndex, setQuestionIndex] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
@@ -37,7 +41,6 @@ const HomePage = () => {
     setShowScore(false);
     setQuestionIndex(0);
     setScore(0);
-    // title
   };
 
   if (showScore) {

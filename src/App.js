@@ -28,7 +28,7 @@ const App = () => {
           <Route path="/AnswerResults" element={<AnswerResults />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/AboutUs" element={<AboutUs />} />
-          {/* <Route path="/*" element={<Navigate to={"/"} />} /> */}
+          <Route path="/*" element={<Navigate to={"/"} />} />
         </Routes>
       </LayOut>
     </ThemeProvider>

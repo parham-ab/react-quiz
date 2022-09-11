@@ -13,9 +13,12 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import UseTitle from "../hooks/UseTitle";
 
 const AnswerResults = ({ score, resetter }) => {
   // title
+  UseTitle("Results");
+
   return (
     <List
       sx={{
