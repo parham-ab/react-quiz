@@ -1,19 +1,23 @@
-import React, { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
+import { useState } from "react";
+// react-router-dom
+import { Link } from "react-router-dom";
+// mui components
+import {
+  AppBar,
+  Box,
+  IconButton,
+  Toolbar,
+  Menu,
+  Container,
+  Button,
+  MenuItem,
+  Typography,
+} from "@mui/material";
 // icons
 import MenuIcon from "@mui/icons-material/Menu";
 import QuizIcon from "@mui/icons-material/Quiz";
-import { Link } from "react-router-dom";
 
-const pages = ["Contact Us", "About Us"];
+const pages = ["ContactUs", "AboutUs"];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -93,7 +97,11 @@ const Header = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link to={`/${page}`}>
+                    <Typography textAlign="center">
+                      {page.split("U")[0] + " " + ["Us"]}
+                    </Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -123,7 +131,7 @@ const Header = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "#e3e3e3", display: "block" }}
               >
-                {page}
+                <Link to={`/${page}`}>{page.split("U")[0] + " " + ["Us"]}</Link>
               </Button>
             ))}
           </Box>
